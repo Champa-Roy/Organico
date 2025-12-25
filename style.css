@@ -1,7 +1,8 @@
 /* Global Styles */
 :root {
     --primary-green: #4ba616;
-    /* Approximate vivid green from image */
+    --primary-orange: #ffb524;
+    /* New orange color for card buttons */
     --text-dark: #121619;
     --text-light: #555555;
     --bg-cream: #f9f8f3;
@@ -24,7 +25,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Container & Layout */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -35,16 +36,12 @@ body {
     position: relative;
     padding: 80px 0;
     min-height: 100vh;
-    /* Make it full height like a landing page */
     display: flex;
     align-items: center;
-    /* Optional: Add a subtle texture or noise if possible, but solid color works for now */
     background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
     background-size: 40px 40px;
-    /* This creates a very subtle dot pattern to mimic texture, reducing opacity to make it barely visible */
 }
 
-/* Making the pattern extremely subtle to match the "clean" look */
 .hero-section::before {
     content: "";
     position: absolute;
@@ -54,9 +51,6 @@ body {
     bottom: 0;
     background: var(--bg-cream);
     opacity: 0.9;
-    /* Show a tiny bit of the dots through? Or just cover it. 
-                   Actually, let's just stick to a clean background with the slight speckle image if we had it.
-                   Improving the background: */
     background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjZDVkN2QyIiBmaWxsLW9wYWNpdHk9IjAuMiI+PHBhdGggZD0iTTEwIDEwaDJ2MmgtMnpNMzAgMzBoMnYyaC0yek01MCAxMGgydjJoLTJ6TTcwIDMwaDJ2MmgtMnpNOTAgMTBoMnYyaC0yeiIvPjwvZz48L3N2Zz4='), var(--bg-cream);
     z-index: -1;
 }
@@ -68,7 +62,7 @@ body {
     justify-content: space-between;
 }
 
-/* Content Column */
+
 .content-column {
     flex: 1;
     min-width: 300px;
@@ -161,19 +155,17 @@ body {
     position: relative;
     width: 100%;
     max-width: 650px;
-    /* Adjust based on image size needed */
 }
 
 .image-wrapper img {
     width: 100%;
     height: auto;
     display: block;
-    /* Optional: Add a subtle drop shadow to match the floating feel */
     filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
     animation: float 6s ease-in-out infinite;
 }
 
-/* Floating Animation for the main image to make it dynamic */
+
 @keyframes float {
     0% {
         transform: translateY(0px);
@@ -188,6 +180,129 @@ body {
     }
 }
 
+/* =========================================
+   Offer Section Styles
+   ========================================= */
+
+.offer-section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.section-header {
+    margin-bottom: 50px;
+    max-width: 700px;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.section-title .highlight {
+    color: var(--primary-green);
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.offer-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    /* Maintain row layout for large screens */
+    flex-wrap: wrap;
+    /* Wrap on smaller */
+}
+
+.offer-card {
+    flex: 1;
+    min-width: 300px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 40px 30px 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.card-content-top {
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.card-desc {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    max-width: 100%;
+}
+
+.card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: auto;
+}
+
+.btn-card {
+    display: inline-block;
+    padding: 10px 25px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    background: transparent;
+    border: 2px solid var(--primary-orange);
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-card:hover {
+    background: var(--primary-orange);
+    color: #fff;
+}
+
+.card-img-holder {
+    width: 160px;
+    height: 140px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: relative;
+    margin-right: 0;
+}
+
+.card-img-holder img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+
+
 /* Responsive Design */
 @media (max-width: 991px) {
     .main-heading {
@@ -200,15 +315,15 @@ body {
     }
 
     .row {
-        flex-direction: column-reverse;
-        /* Image on top on mobile often looks better, or stick to column for text then image? 
-                                           Usually hero images are visual anchors, but let's see. 
-                                           Actually, standard is Text then Image on desktop, 
-                                           but on mobile often Image then Text OR Text then Image. 
-                                           The design might work better with Image below or above. 
-                                           Let's stick to standard flow: Text on top, Image on bottom for mobile 
-                                           if we want to prioritize content. */
         flex-direction: column;
+        /* Force stack on mobile/tablet for consistency if needed, but for cards we want grid */
+    }
+
+    /* Override row flex direction for grid just in case line 195 affects it universally */
+    .offer-grid {
+        flex-direction: row;
+        /* Keep row for grid unless screen is too small */
+        flex-wrap: wrap;
     }
 
     .content-column {
@@ -221,6 +336,18 @@ body {
 
     .image-column {
         justify-content: center;
+    }
+
+    .offer-card {
+        min-width: 45%;
+        /* 2 per row on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .offer-grid {
+        flex-direction: column;
+        /* 1 per row on mobile */
     }
 }
 
@@ -236,5 +363,9 @@ body {
     .button-group {
         width: 100%;
         justify-content: center;
+    }
+
+    .offer-card {
+        min-width: 100%;
     }
 }
