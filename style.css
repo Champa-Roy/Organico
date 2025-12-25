@@ -178,9 +178,9 @@ body {
     }
 }
 
-/* =========================================
-   Offer Section Styles
-   ========================================= */
+
+
+/*  What We Offer For You Section */
 
 .offer-section {
     padding: 80px 0;
@@ -190,6 +190,12 @@ body {
 .section-header {
     margin-bottom: 50px;
     max-width: 700px;
+}
+
+.section-header.text-center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 .section-title {
@@ -213,9 +219,7 @@ body {
     display: flex;
     justify-content: space-between;
     gap: 30px;
-    /* Maintain row layout for large screens */
     flex-wrap: wrap;
-    /* Wrap on smaller */
 }
 
 .offer-card {
@@ -299,6 +303,119 @@ body {
     display: block;
 }
 
+/* Browse Our Hottest Categories */
+.category-section {
+    padding: 60px 0 100px;
+}
+
+.category-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.category-card {
+    flex: 1;
+    min-width: 180px;
+    max-width: 220px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 250px;
+}
+
+/* Initial styling */
+.cat-img-wrapper {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.cat-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.cat-img-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.cat-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+/* The Arrow button - hidden by default or shown on hover */
+.cat-arrow {
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-green);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    position: absolute;
+    bottom: -15px; /* Floating at the bottom edge */
+    box-shadow: 0 4px 10px rgba(75, 166, 22, 0.3);
+}
+
+/* Hover active state */
+.category-card:hover, .category-card.active {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* Effect on circle */
+.category-card:hover .cat-circle, .category-card.active .cat-circle {
+    background-color: var(--primary-orange);
+    width: 130px; /* Expand slightly */
+    height: 130px;
+}
+
+/* Effect on image */
+.category-card:hover .cat-img-wrapper img, .category-card.active .cat-img-wrapper img {
+    transform: scale(1.1);
+}
+
+/* Effect on Arrow */
+.category-card:hover .cat-arrow, .category-card.active .cat-arrow {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 
 /* Responsive Design */
@@ -323,6 +440,10 @@ body {
         /* Keep row for grid unless screen is too small */
         flex-wrap: wrap;
     }
+    
+    .category-grid {
+        flex-direction: row;
+    }
 
     .content-column {
         padding-right: 0;
@@ -339,6 +460,11 @@ body {
     .offer-card {
         min-width: 45%;
         /* 2 per row on tablets */
+    }
+    
+    .category-card {
+        min-width: 40%;
+        margin-bottom: 30px; /* Add spacing for vertical stacking */
     }
 }
 
@@ -365,5 +491,17 @@ body {
 
     .offer-card {
         min-width: 100%;
+    }
+    
+    .category-card {
+        min-width: 45%; /* 2 per row on mobile looks cool usually, or 100% */
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-card {
+        min-width: 100%;
+        max-width: 100%;
     }
 }
